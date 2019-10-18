@@ -137,11 +137,8 @@ artifacts {
 
 sourceSets {
 	main {
-		java {
-			srcDirs += "src/api/java"
-		}
+		java
 		resources {
-			srcDirs += "src/api/resources"
 			srcDirs += "src/generated/resources"
 		}
 	}
