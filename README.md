@@ -1,4 +1,4 @@
-# attack-speed-enchantment
+# Attack-Speed-Enchantment
 
 [
 ![Curseforge Downloads](http://cf.way2muchnoise.eu/attack-speed-enchantment.svg)

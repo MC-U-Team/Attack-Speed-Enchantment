@@ -11,7 +11,7 @@ authors="HyCraftHD"
 	version="${file.jarVersion}"
 	displayName="Attack Speed Enchantment"
 	updateJSONURL="https://api.u-team.info/update/attackspeedenchantment.json"
-	description="This mod adds an enchantment that allows you to change the attack speed."
+	description="This mod adds an enchantment that allows you to decrease the attack speed."
 	
 	[[dependencies.attackspeedenchantment]]
 	    modId="forge"
