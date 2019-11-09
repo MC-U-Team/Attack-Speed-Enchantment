@@ -4,11 +4,12 @@ import info.u_team.attack_speed_enchantment.AttackSpeedEnchantmentMod;
 import info.u_team.attack_speed_enchantment.init.AttackSpeedEnchantmentEnchantments;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.util.text.*;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 
-@EventBusSubscriber(modid = AttackSpeedEnchantmentMod.MODID)
+@EventBusSubscriber(modid = AttackSpeedEnchantmentMod.MODID, value = Dist.CLIENT)
 public class ToolTipEventHandler {
 	
 	private static final String TRANSLATION_BASE = "tooltip.attackspeedenchantment.faster_attack_speed";
