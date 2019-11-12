@@ -20,6 +20,9 @@ public class PlayerAttackSpeedHook {
 		if (level < 1) {
 			return value;
 		}
+		if(level > 10) {
+			return 0;
+		}
 		final float factor = 1 - (level * 0.1F);
 		return value * factor;
 	}
