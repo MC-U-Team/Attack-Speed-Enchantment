@@ -1,14 +1,6 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [1.14.4-1.0.0.3] - 2019-12-24
+## [1.15.1-1.0.0.4] - 2019-12-24
 ### Changed
- - Final 1.14.4 release
-
-## [1.14.4-0.9.1.2] - 2019-11-09
-### Changed
- - Fix crash on server because of the toolip event handler
-
-## [1.14.4-0.9.0.1] - 2019-10-19
-### Added
- - Added enchantment with basic functionality
+ - Port to 1.15.1
