@@ -18,6 +18,11 @@ public class AttackSpeedEnchantmentLanguagesProvider extends CommonLanguagesProv
 		add(FAST_ATTACK_SPEED, "Faster Attack Speed");
 		add(tooltip, "%s faster Attack Speed");
 		add(tooltip + ".none", "No Attack Speed");
+		
+		// Deutsch
+		add("de_de", FAST_ATTACK_SPEED, "Schnellere Angriffsgeschwindigkeit");
+		add("de_de", tooltip, "%s schnellere Angriffsgeschwindigkeit");
+		add("de_de", tooltip + ".none", "Keine Angriffsgeschwindigkeit");
 	}
 	
 }
