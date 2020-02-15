@@ -7,12 +7,13 @@ buildscript {
     }
     dependencies {
         classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "3.+", changing: true
-		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.3.0"
+		classpath "gradle.plugin.com.matthewprenger:CurseGradle:1.4.0"
     }
 }
 
 apply from: "https://raw.githubusercontent.com/HyCraftHD/Blank-Forge-Project/master/configuration.methods"
 apply from: "https://raw.githubusercontent.com/HyCraftHD/Blank-Forge-Project/master/git.methods"
+apply from: "https://raw.githubusercontent.com/HyCraftHD/Blank-Forge-Project/master/signjar.methods"
 
 setup()
 info()
@@ -64,7 +65,7 @@ minecraft {
         }
         data = {
             workingDirectory project.file("run/data").canonicalPath
-            args "--mod", "attackspeedenchantment", "--all", "--output", "\"" + file("src/generated/resources").toString() + "\""
+            args "--mod", "attackspeedenchantment", "--all", "--output", "\"" + file("src/generated/resources").toString() + "\"", "--validate", "--existing", "\"" + sourceSets.main.resources.srcDirs[0] + "\""
             mods {
                 attackspeedenchantment {
                     source sourceSets.main
@@ -83,7 +84,8 @@ def normalManifest = {
 		"Implementation-Title": config.mod.name,
     	"Implementation-Version": project.version,
 		"Implementation-Vendor": "Team UTeam",
-        "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+        "Fingerprint": project.findProperty("keystore.fingerprint") ?: "NONE"
 	)
 }
 
@@ -135,6 +137,8 @@ artifacts {
     archives jar
 }
 
+signAllJars()
+
 sourceSets {
 	main {
 		java
@@ -164,6 +168,8 @@ def generateChangelogUrl() {
 }
 
 curseforge {
+	tasks.curseforge.dependsOn build
+
 	if(System.getenv("token") != null) {
 		apiKey = System.getenv("token")
 	} else {
@@ -173,9 +179,7 @@ curseforge {
 			apiKey = "mrTroble" //We dont have one lol ¯\_(ツ)_/¯
 		}
 	}
-	
-	tasks.curseforge.dependsOn build
-	
+		
   	project {
     	id = config.curse.id
     	releaseType = config.curse.type
@@ -205,7 +209,6 @@ curseforge {
 }
 
 uploadArchives {
-
 	tasks.uploadArchives.dependsOn build
 
 	repositories {
@@ -251,6 +254,7 @@ uploadArchives {
 						}
 					}
 				}
+				setConfigurations(null) // Prevent all dependencies in the pom file
 			}
 		}
 	}
@@ -263,5 +267,11 @@ task uploadBoth {
 	tasks.uploadBoth.dependsOn setBuildNumber
 	doLast {
 		println "Published both"
+	}
+}
+
+gradle.taskGraph.whenReady {
+	if (gradle.taskGraph.hasTask(":curseforge${config.curse.id}") || gradle.taskGraph.hasTask(":uploadArchives")) {
+		validateBuild()
 	}
 }
