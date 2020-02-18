@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
  - Updated mappings to 20200217-1.15.1
  - Updated to uteamcore 2.10.5.154
  - Update buildscripts
+ - Check sign with jar sign verifier from now on
 
 ## [1.15.2-1.0.1.6] - 2020-02-15
 ### Changed
