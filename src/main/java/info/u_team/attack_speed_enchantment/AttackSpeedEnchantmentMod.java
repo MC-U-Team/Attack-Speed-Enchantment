@@ -11,4 +11,5 @@ public class AttackSpeedEnchantmentMod {
 	public AttackSpeedEnchantmentMod() {
 		JarSignVerifier.checkSigned(MODID);
 	}
+	
 }
