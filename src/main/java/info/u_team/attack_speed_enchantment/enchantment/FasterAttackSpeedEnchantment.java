@@ -1,14 +1,13 @@
 package info.u_team.attack_speed_enchantment.enchantment;
 
-import info.u_team.u_team_core.enchantment.UEnchantment;
-import net.minecraft.enchantment.EnchantmentType;
+import net.minecraft.enchantment.*;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
 
-public class FasterAttackSpeedEnchantment extends UEnchantment {
+public class FasterAttackSpeedEnchantment extends Enchantment {
 	
-	public FasterAttackSpeedEnchantment(String name) {
-		super(name, Rarity.COMMON, EnchantmentType.WEAPON, new EquipmentSlotType[] { EquipmentSlotType.MAINHAND });
+	public FasterAttackSpeedEnchantment() {
+		super(Rarity.COMMON, EnchantmentType.WEAPON, new EquipmentSlotType[] { EquipmentSlotType.MAINHAND });
 	}
 	
 	@Override
