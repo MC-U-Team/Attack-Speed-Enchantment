@@ -16,7 +16,7 @@ public class ToolTipEventHandler {
 	
 	@SubscribeEvent
 	public static void onItemTooltip(ItemTooltipEvent event) {
-		final int level = EnchantmentHelper.getEnchantmentLevel(AttackSpeedEnchantmentEnchantments.FAST_ATTACK_SPEED, event.getItemStack());
+		final int level = EnchantmentHelper.getEnchantmentLevel(AttackSpeedEnchantmentEnchantments.FAST_ATTACK_SPEED.get(), event.getItemStack());
 		if (level < 1) {
 			return;
 		}
