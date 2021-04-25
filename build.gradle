@@ -73,6 +73,8 @@ minecraft {
 	}
 }
 
+def generalManifest = manifest normalManifest
+
 jar {
 	classifier = ""
 	
@@ -81,7 +83,7 @@ jar {
 	exclude(".cache")
 	
 	manifest {
-		from normalManifest
+		from generalManifest
 		attributes "MixinConfigs": "${config.mod.modid}.mixins.json"
 	}
 }
@@ -95,7 +97,7 @@ task deobfJar(type: Jar) {
 	exclude(".cache")
 	
 	manifest {
-		from normalManifest
+		from generalManifest
 		attributes "MixinConfigs": "${config.mod.modid}.mixins.json"
 	}
 }
