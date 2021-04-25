@@ -12,7 +12,7 @@ authors="HyCraftHD"
 	version="${file.jarVersion}"
 	displayName="Attack Speed Enchantment"
 	updateJSONURL="https://api.u-team.info/update/attackspeedenchantment.json"
-	description="This mod adds an enchantment that allows you to decrease the attack speed."
+	description="This mod adds an enchantment that allows you to decrease the attack cooldown. When the enchantment reaches Level 10 the cooldown is removed entirely."
 	
 	[[dependencies.attackspeedenchantment]]
 	    modId="forge"
