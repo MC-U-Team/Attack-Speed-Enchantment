@@ -4,7 +4,9 @@
 	"compatibilityLevel": "JAVA_8",
 	"refmap": "attackspeedenchantment.mixins.refmap.json",
 	"package": "info.u_team.attack_speed_enchantment.mixin",
-	"mixins": [],
+	"mixins": [
+		"PlayerEntityMixin"
+	],
 	"client": [],
 	"injectors": {
 		"defaultRequire": 1
