@@ -14,7 +14,7 @@ public class AttackSpeedEnchantmentEnchantments {
 	
 	public static final RegistryObject<FasterAttackSpeedEnchantment> FAST_ATTACK_SPEED = ENCHANTMENTS.register("faster_attack_speed", FasterAttackSpeedEnchantment::new);
 	
-	public static void register(IEventBus bus) {
+	public static void registerMod(IEventBus bus) {
 		ENCHANTMENTS.register(bus);
 	}
 	
