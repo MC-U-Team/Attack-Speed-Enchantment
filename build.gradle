@@ -150,7 +150,9 @@ dependencies {
 }
 
 mixin {
-    disableEclipseAddon
+    disableEclipseAddon = true
+    println "DISBLE"
+    println disableEclipseAddon
     add sourceSets.main, "${config.mod.modid}.mixins.refmap.json"
 }
 
