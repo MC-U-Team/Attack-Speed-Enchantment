@@ -1,5 +1,5 @@
 {
 	"enchantment.attackspeedenchantment.faster_attack_speed": "Schnellere Angriffsgeschwindigkeit",
-	"tooltip.attackspeedenchantment.faster_attack_speed": "%s schnellere Angriffsgeschwindigkeit",
-	"tooltip.attackspeedenchantment.faster_attack_speed.none": "Keine Angriffsgeschwindigkeit"
+	"general.attackspeedenchantment.faster_attack_speed.tooltip.faster.0": "%s weniger Angriffsabklingzeit",
+	"general.attackspeedenchantment.faster_attack_speed.tooltip.none.0": "Keine Angriffsabklingzeit"
 }
