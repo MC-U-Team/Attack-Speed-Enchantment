@@ -2,7 +2,8 @@ package info.u_team.attack_speed_enchantment.data.provider;
 
 import static info.u_team.attack_speed_enchantment.init.AttackSpeedEnchantmentEnchantments.FASTER_ATTACK_SPEED;
 
-import info.u_team.u_team_core.data.*;
+import info.u_team.u_team_core.data.CommonLanguagesProvider;
+import info.u_team.u_team_core.data.GenerationData;
 
 public class AttackSpeedEnchantmentLanguagesProvider extends CommonLanguagesProvider {
 	
@@ -12,18 +13,15 @@ public class AttackSpeedEnchantmentLanguagesProvider extends CommonLanguagesProv
 	
 	@Override
 	public void addTranslations() {
-		
-		final String tooltip = "tooltip.attackspeedenchantment.faster_attack_speed";
-		
 		// English
 		addEnchantment(FASTER_ATTACK_SPEED, "Faster Attack Speed");
-		add(tooltip, "%s faster Attack Speed");
-		add(tooltip + ".none", "No Attack Speed");
+		addTooltip("faster_attack_speed", "faster", 0, "%s less attack cooldown");
+		addTooltip("faster_attack_speed", "none", 0, "No attack cooldown");
 		
 		// Deutsch
 		addEnchantment("de_de", FASTER_ATTACK_SPEED, "Schnellere Angriffsgeschwindigkeit");
-		add("de_de", tooltip, "%s schnellere Angriffsgeschwindigkeit");
-		add("de_de", tooltip + ".none", "Keine Angriffsgeschwindigkeit");
+		addTooltip("de_de", "faster_attack_speed", "faster", 0, "%s weniger Angriffsabklingzeit");
+		addTooltip("de_de", "faster_attack_speed", "none", 0, "Keine Angriffsabklingzeit");
 	}
 	
 }
