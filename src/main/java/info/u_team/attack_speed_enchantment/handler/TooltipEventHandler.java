@@ -10,7 +10,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 
-public class ToolTipEventHandler {
+public class TooltipEventHandler {
 	
 	private static final IFormattableTextComponent NONE_COMPONENT = new StringTextComponent(" ").appendSibling(TooltipCreator.create(AttackSpeedEnchantmentMod.MODID, "faster_attack_speed", "none", 0).mergeStyle(TextFormatting.DARK_PURPLE));
 	
@@ -27,6 +27,6 @@ public class ToolTipEventHandler {
 	}
 	
 	public static void registerForge(IEventBus bus) {
-		bus.addListener(ToolTipEventHandler::onItemTooltip);
+		bus.addListener(TooltipEventHandler::onItemTooltip);
 	}
 }
