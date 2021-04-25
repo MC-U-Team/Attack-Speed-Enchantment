@@ -150,10 +150,11 @@ dependencies {
 }
 
 mixin {
+    disableEclipseAddon
     add sourceSets.main, "${config.mod.modid}.mixins.refmap.json"
 }
 
-tasks.named("eclipse").get().dependsOn tasks.named("createMcpToSrg")
+println mixin.disableEclipseAddon
 
 curseforge {
 	afterEvaluate {
