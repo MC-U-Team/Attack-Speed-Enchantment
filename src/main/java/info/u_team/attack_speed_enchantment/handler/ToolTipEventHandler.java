@@ -21,7 +21,7 @@ public class ToolTipEventHandler {
 			return;
 		}
 		if (level >= 10) {
-			event.getToolTip().add(new TranslationTextComponent(TRANSLATION_BASE + ".none").applyTextStyle(TextFormatting.RED));
+			event.getToolTip().add(new TranslationTextComponent(TRANSLATION_BASE + ".none").mergeStyle(TextFormatting.RED));
 		} else {
 			event.getToolTip().add(new TranslationTextComponent(TRANSLATION_BASE, level * 10 + "%"));
 		}
