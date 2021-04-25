@@ -21,10 +21,10 @@ buildscript {
 apply from: "https://gradle-files.u-team.info/default-project.gradle"
 
 apply plugin: "net.minecraftforge.gradle"
+apply plugin: "org.spongepowered.mixin"
 apply plugin: "eclipse"
 apply plugin: "info.u_team.curse_gradle_uploader"
 apply plugin: "maven-publish"
-apply plugin: "org.spongepowered.mixin"
 
 group = "info.u-team"
 archivesBaseName = generateArchivesBaseName()
@@ -150,13 +150,8 @@ dependencies {
 }
 
 mixin {
-    disableEclipseAddon = true
-    println "DISBLE"
-    println disableEclipseAddon
     add sourceSets.main, "${config.mod.modid}.mixins.refmap.json"
 }
-
-println mixin.disableEclipseAddon
 
 curseforge {
 	afterEvaluate {
