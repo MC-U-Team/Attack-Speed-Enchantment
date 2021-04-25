@@ -43,7 +43,7 @@ minecraft {
 		client = {
 			workingDirectory project.file("run/client").canonicalPath
 			property "mixin.env.disableRefMap", "true"
-			args "--mixin.config", "${config.mod.modid}.mixins.json"
+			args "--mixin.config", "${config.mod.modid}.mixins.json".toString()
 			mods {
 				"${config.mod.modid}" {
 					source sourceSets.main
@@ -53,7 +53,7 @@ minecraft {
 		server = {
 			workingDirectory project.file("run/server").canonicalPath
 			property "mixin.env.disableRefMap", "true"
-			args "--mixin.config", "${config.mod.modid}.mixins.json"
+			args "--mixin.config", "${config.mod.modid}.mixins.json".toString()
 			mods {
 				"${config.mod.modid}" {
 					source sourceSets.main
@@ -63,7 +63,7 @@ minecraft {
 		data = {
 			workingDirectory project.file("run/data").canonicalPath
 			property "mixin.env.disableRefMap", "true"
-			args "--mixin.config", "${config.mod.modid}.mixins.json", "--mod", config.mod.modid, "--all", "--output", "\"" + file("src/generated/resources").toString() + "\"", "--validate", "--existing", "\"" + sourceSets.main.resources.srcDirs[0] + "\""
+			args "--mixin.config", "${config.mod.modid}.mixins.json".toString(), "--mod", config.mod.modid, "--all", "--output", "\"" + file("src/generated/resources").toString() + "\"", "--validate", "--existing", "\"" + sourceSets.main.resources.srcDirs[0] + "\""
 			mods {
 				"${config.mod.modid}" {
 					source sourceSets.main
@@ -152,6 +152,8 @@ dependencies {
 mixin {
     add sourceSets.main, "${config.mod.modid}.mixins.refmap.json"
 }
+
+tasks.named("eclipse").get().dependsOn tasks.named("createMcpToSrg")
 
 curseforge {
 	afterEvaluate {
