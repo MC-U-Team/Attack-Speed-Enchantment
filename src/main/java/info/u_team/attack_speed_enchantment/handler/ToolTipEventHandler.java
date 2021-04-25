@@ -12,7 +12,7 @@ public class ToolTipEventHandler {
 	private static final String TRANSLATION_BASE = "tooltip.attackspeedenchantment.faster_attack_speed";
 	
 	private static void onItemTooltip(ItemTooltipEvent event) {
-		final int level = EnchantmentHelper.getEnchantmentLevel(AttackSpeedEnchantmentEnchantments.FAST_ATTACK_SPEED.get(), event.getItemStack());
+		final int level = EnchantmentHelper.getEnchantmentLevel(AttackSpeedEnchantmentEnchantments.FASTER_ATTACK_SPEED.get(), event.getItemStack());
 		if (level < 1) {
 			return;
 		}

@@ -16,7 +16,7 @@ public class PlayerAttackSpeedHook {
 	}
 	
 	private static float getUpdatedValueForMainHand(float value, ItemStack stack) {
-		final int level = EnchantmentHelper.getEnchantmentLevel(AttackSpeedEnchantmentEnchantments.FAST_ATTACK_SPEED.get(), stack);
+		final int level = EnchantmentHelper.getEnchantmentLevel(AttackSpeedEnchantmentEnchantments.FASTER_ATTACK_SPEED.get(), stack);
 		if (level < 1) {
 			return value;
 		}
