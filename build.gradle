@@ -7,10 +7,14 @@ buildscript {
 			url = "https://repo.u-team.info"
 		}
 		mavenCentral()
+		maven { 
+			url = "https://repo.spongepowered.org/maven"
+		}
 	}
 	dependencies {
 		classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "4.1.7", changing: true
 		classpath group: "info.u-team.curse_gradle_uploader", name: "curse_gradle_uploader", version: "1.4.1"
+		classpath group: "org.spongepowered", name: "mixingradle", version: "0.7-SNAPSHOT"
 	}
 }
 
@@ -20,6 +24,7 @@ apply plugin: "net.minecraftforge.gradle"
 apply plugin: "eclipse"
 apply plugin: "info.u_team.curse_gradle_uploader"
 apply plugin: "maven-publish"
+apply plugin: "org.spongepowered.mixin"
 
 group = "info.u-team"
 archivesBaseName = generateArchivesBaseName()
@@ -38,6 +43,7 @@ minecraft {
 		client = {
 			workingDirectory project.file("run/client").canonicalPath
 			property "mixin.env.disableRefMap", "true"
+			args "--mixin.config", "${config.mod.modid}.mixins.json"
 			mods {
 				"${config.mod.modid}" {
 					source sourceSets.main
@@ -47,6 +53,7 @@ minecraft {
 		server = {
 			workingDirectory project.file("run/server").canonicalPath
 			property "mixin.env.disableRefMap", "true"
+			args "--mixin.config", "${config.mod.modid}.mixins.json"
 			mods {
 				"${config.mod.modid}" {
 					source sourceSets.main
@@ -56,7 +63,7 @@ minecraft {
 		data = {
 			workingDirectory project.file("run/data").canonicalPath
 			property "mixin.env.disableRefMap", "true"
-			args "--mod", config.mod.modid, "--all", "--output", "\"" + file("src/generated/resources").toString() + "\"", "--validate", "--existing", "\"" + sourceSets.main.resources.srcDirs[0] + "\""
+			args "--mixin.config", "${config.mod.modid}.mixins.json", "--mod", config.mod.modid, "--all", "--output", "\"" + file("src/generated/resources").toString() + "\"", "--validate", "--existing", "\"" + sourceSets.main.resources.srcDirs[0] + "\""
 			mods {
 				"${config.mod.modid}" {
 					source sourceSets.main
@@ -73,7 +80,10 @@ jar {
 	
 	exclude(".cache")
 	
-	manifest normalManifest
+	manifest {
+		from normalManifest
+		attributes "MixinConfigs": "${config.mod.modid}.mixins.json"
+	}
 }
 
 task deobfJar(type: Jar) {
@@ -84,7 +94,10 @@ task deobfJar(type: Jar) {
 	
 	exclude(".cache")
 	
-	manifest normalManifest
+	manifest {
+		from normalManifest
+		attributes "MixinConfigs": "${config.mod.modid}.mixins.json"
+	}
 }
 
 task sourcesJar(type: Jar) {
@@ -132,6 +145,12 @@ dependencies {
 	compileOnly getUTeamCoreDependency()
 	compileOnly fg.deobf(getJeiApiDependency())
 	runtimeOnly fg.deobf(getJeiDependency())
+	
+	annotationProcessor "org.spongepowered:mixin:0.8.2:processor"
+}
+
+mixin {
+    add sourceSets.main, "${config.mod.modid}.mixins.refmap.json"
 }
 
 curseforge {
