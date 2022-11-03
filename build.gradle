@@ -4,12 +4,16 @@ buildscript {
 			url = "https://maven.minecraftforge.net"
 		}
 		maven {
+			url = "https://maven.parchmentmc.org"
+		}
+		maven {
 			url = "https://repo.u-team.info"
 		}
 		mavenCentral()
 	}
 	dependencies {
 		classpath group: "net.minecraftforge.gradle", name: "ForgeGradle", version: "5.1.+", changing: true
+		classpath group: "org.parchmentmc", name: "librarian", version: "1.+", changing: true
 		classpath group: "org.spongepowered", name: "mixingradle", version: "0.7.+", changing: true
 		classpath group: "info.u-team.gradle_files", name: "gradle_files", version: "1.2.2"
 		classpath group: "info.u-team.curse_gradle_uploader", name: "curse_gradle_uploader", version: "1.5.1"
@@ -17,6 +21,7 @@ buildscript {
 }
 
 apply plugin: "net.minecraftforge.gradle"
+apply plugin: "org.parchmentmc.librarian.forgegradle"
 apply plugin: "org.spongepowered.mixin"
 apply plugin: "info.u_team.gradle_files"
 apply plugin: "info.u_team.curse_gradle_uploader"
@@ -32,7 +37,7 @@ gradlefiles {
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(8)
+		languageVersion = JavaLanguageVersion.of(17)
 	}
 	withSourcesJar()
 	withJavadocJar()
@@ -40,7 +45,7 @@ java {
 
 minecraft {
 	mappings channel: config.forge.mapping_channel, version: config.forge.mapping
-	
+		
 	runs {
 		client = {
 			workingDirectory file("run/client")
@@ -119,11 +124,11 @@ repositories {
 dependencies {
 	minecraft gradlefiles.forgeDependency()
 	
-	implementation fg.deobf("info.u-team:u_team_core-1.16.5:3.2.1.229")
+	implementation fg.deobf("info.u-team:u_team_core-1.19.2:4.4.1.233")
 	
-	runtimeOnly fg.deobf("mezz.jei:jei-${config.minecraft.version}:${config.jei.version}")
+	runtimeOnly fg.deobf("mezz.jei:jei-${config.minecraft.version}-forge:${config.jei.version}")
 	
-	annotationProcessor "org.spongepowered:mixin:0.8.4:processor"
+	annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 }
 
 mixin {
@@ -143,7 +148,7 @@ curseforge {
 		
 		addGameVersion config.minecraft.version
 		addGameVersion "Forge"
-		addGameVersion "Java 8"
+		addGameVersion "Java 17"
 		
 		relations {
 			requiredDependency "u-team-core"
