@@ -9,13 +9,12 @@ import info.u_team.attack_speed_enchantment.hook.PlayerAttackSpeedHook;
 import net.minecraft.world.entity.player.Player;
 
 @Mixin(Player.class)
-public class PlayerEntityMixin {
+public class PlayerMixin {
 	
-	@Inject(method = "getCooldownPeriod", cancellable = true, at = @At("RETURN"))
-	private void updateCooldownPeriodWithFasterAttackSpeed(CallbackInfoReturnable<Float> callback) {
+	@Inject(method = "getCurrentItemAttackStrengthDelay", cancellable = true, at = @At("RETURN"))
+	private void getCurrentItemAttackStrengthDelayWithFasterAttackSpeed(CallbackInfoReturnable<Float> callback) {
 		final float newValue = PlayerAttackSpeedHook.hook(callback.getReturnValueF(), (Player) (Object) this);
 		
 		callback.setReturnValue(newValue);
-		callback.cancel();
 	}
 }
