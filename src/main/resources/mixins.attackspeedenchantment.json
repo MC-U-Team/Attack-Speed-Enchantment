@@ -2,7 +2,7 @@
 	"minVersion": "0.8",
 	"required": true,
 	"compatibilityLevel": "JAVA_8",
-	"refmap": "attackspeedenchantment.mixins.refmap.json",
+	"refmap": "mixins.attackspeedenchantment.refmap.json",
 	"package": "info.u_team.attack_speed_enchantment.mixin",
 	"mixins": [
 		"PlayerEntityMixin"
