@@ -1,11 +1,6 @@
 package info.u_team.attack_speed_enchantment.enchantment;
 
-import net.minecraft.enchantment.*;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.item.*;
-
-import net.minecraft.world.item.enchantment.Enchantment.Rarity;
-
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;

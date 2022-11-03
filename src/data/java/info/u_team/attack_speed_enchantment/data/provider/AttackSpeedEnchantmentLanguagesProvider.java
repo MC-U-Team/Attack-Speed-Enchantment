@@ -7,12 +7,12 @@ import info.u_team.u_team_core.data.GenerationData;
 
 public class AttackSpeedEnchantmentLanguagesProvider extends CommonLanguagesProvider {
 	
-	public AttackSpeedEnchantmentLanguagesProvider(GenerationData data) {
-		super(data);
+	public AttackSpeedEnchantmentLanguagesProvider(GenerationData generationData) {
+		super(generationData);
 	}
 	
 	@Override
-	public void addTranslations() {
+	public void register() {
 		// English
 		addEnchantment(FASTER_ATTACK_SPEED, "Faster Attack Speed");
 		addTooltip("faster_attack_speed", "faster", 0, "%s Less Attack Cooldown");
