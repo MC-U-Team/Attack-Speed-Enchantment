@@ -3,7 +3,7 @@ package info.u_team.attack_speed_enchantment.init;
 import info.u_team.attack_speed_enchantment.AttackSpeedEnchantmentMod;
 import info.u_team.attack_speed_enchantment.enchantment.FasterAttackSpeedEnchantment;
 import info.u_team.u_team_core.util.registry.CommonDeferredRegister;
-import net.minecraft.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.ForgeRegistries;

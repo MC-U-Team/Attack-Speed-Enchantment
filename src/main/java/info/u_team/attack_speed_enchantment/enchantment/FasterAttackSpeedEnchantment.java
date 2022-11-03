@@ -1,13 +1,20 @@
 package info.u_team.attack_speed_enchantment.enchantment;
 
 import net.minecraft.enchantment.*;
-import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.item.*;
+
+import net.minecraft.world.item.enchantment.Enchantment.Rarity;
+
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentCategory;
 
 public class FasterAttackSpeedEnchantment extends Enchantment {
 	
 	public FasterAttackSpeedEnchantment() {
-		super(Rarity.COMMON, EnchantmentType.WEAPON, new EquipmentSlotType[] { EquipmentSlotType.MAINHAND });
+		super(Rarity.COMMON, EnchantmentCategory.WEAPON, new EquipmentSlot[] { EquipmentSlot.MAINHAND });
 	}
 	
 	@Override
@@ -16,17 +23,17 @@ public class FasterAttackSpeedEnchantment extends Enchantment {
 	}
 	
 	@Override
-	public boolean canApply(ItemStack stack) {
-		return stack.getItem() instanceof AxeItem ? true : super.canApply(stack);
+	public boolean canEnchant(ItemStack stack) {
+		return stack.getItem() instanceof AxeItem ? true : super.canEnchant(stack);
 	}
 	
 	@Override
-	public int getMinEnchantability(int enchantmentLevel) {
-		return super.getMinEnchantability(enchantmentLevel) + 10;
+	public int getMinCost(int enchantmentLevel) {
+		return super.getMinCost(enchantmentLevel) + 10;
 	}
 	
 	@Override
-	public int getMaxEnchantability(int enchantmentLevel) {
-		return super.getMaxEnchantability(enchantmentLevel) + 5;
+	public int getMaxCost(int enchantmentLevel) {
+		return super.getMaxCost(enchantmentLevel) + 5;
 	}
 }

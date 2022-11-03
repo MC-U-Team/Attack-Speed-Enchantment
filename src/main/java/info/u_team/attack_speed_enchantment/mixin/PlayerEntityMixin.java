@@ -6,14 +6,14 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import info.u_team.attack_speed_enchantment.hook.PlayerAttackSpeedHook;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.entity.player.Player;
 
-@Mixin(PlayerEntity.class)
+@Mixin(Player.class)
 public class PlayerEntityMixin {
 	
 	@Inject(method = "getCooldownPeriod", cancellable = true, at = @At("RETURN"))
 	private void updateCooldownPeriodWithFasterAttackSpeed(CallbackInfoReturnable<Float> callback) {
-		final float newValue = PlayerAttackSpeedHook.hook(callback.getReturnValueF(), (PlayerEntity) (Object) this);
+		final float newValue = PlayerAttackSpeedHook.hook(callback.getReturnValueF(), (Player) (Object) this);
 		
 		callback.setReturnValue(newValue);
 		callback.cancel();
