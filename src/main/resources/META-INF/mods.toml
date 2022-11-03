@@ -1,18 +1,18 @@
 modLoader="javafml"
 loaderVersion="[43,)"
 issueTrackerURL="https://github.com/MC-U-Team/Attack-Speed-Enchantment/issues"
-displayURL="https://u-team.info/mods/attackspeedenchantment"
-logoFile="logo.png"
 license="Apache-2.0 License"
-credits="Team U-Team"
-authors="HyCraftHD"
 
 [[mods]]
 	modId="attackspeedenchantment"
 	version="${file.jarVersion}"
 	displayName="Attack Speed Enchantment"
+	displayURL="https://u-team.info/mods/attackspeedenchantment"
 	updateJSONURL="https://api.u-team.info/update/attackspeedenchantment.json"
-	description="This mod adds an enchantment that allows you to decrease the attack cooldown. When the enchantment reaches Level 10 the cooldown is removed entirely."
+	logoFile="logo.png"
+	credits="Team U-Team"
+	authors="HyCraftHD"
+	description="Join our discord server here: https://discord.hycrafthd.net\n\nThis mod adds an enchantment that allows you to decrease the attack cooldown. When the enchantment reaches Level 10 the cooldown is removed entirely."
 	
 	[[dependencies.attackspeedenchantment]]
 	    modId="forge"
