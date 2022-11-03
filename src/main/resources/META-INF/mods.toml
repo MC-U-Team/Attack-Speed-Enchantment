@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[36,)"
+loaderVersion="[43,)"
 issueTrackerURL="https://github.com/MC-U-Team/Attack-Speed-Enchantment/issues"
 displayURL="https://u-team.info/mods/attackspeedenchantment"
 logoFile="logo.png"
@@ -17,20 +17,20 @@ authors="HyCraftHD"
 	[[dependencies.attackspeedenchantment]]
 	    modId="forge"
 	    mandatory=true
-	    versionRange="[36.1.30,)"
+	    versionRange="[43.1.43,)"
 	    ordering="NONE"
 	    side="BOTH"
 	
 	[[dependencies.attackspeedenchantment]]
 	    modId="minecraft"
 	    mandatory=true
-	    versionRange="[1.16.5]"
+	    versionRange="[1.19.2]"
 	    ordering="NONE"
 	    side="BOTH"
 	    
 	[[dependencies.attackspeedenchantment]]
 	    modId="uteamcore"
 	    mandatory=true
-	    versionRange="[3.2.1.196,)"
+	    versionRange="[4.4.2.234,)"
 	    ordering="NONE"
 	    side="BOTH"
