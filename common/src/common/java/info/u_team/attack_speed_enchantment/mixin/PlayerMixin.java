@@ -17,7 +17,6 @@ public class PlayerMixin {
 	private void getCurrentItemAttackStrengthDelayWithFasterAttackSpeed(CallbackInfoReturnable<Float> callback) {
 		final int level = Mth.clamp(EnchantmentUtil.getEnchantmentLevel(AttackSpeedEnchantmentEnchantments.FASTER_ATTACK_SPEED.get(), ((Player) (Object) this).getMainHandItem()), 0, 10);
 		if (level > 0) {
-			System.out.println("LEVEL: " + level);
 			callback.setReturnValue(callback.getReturnValueF() * (1 - (level * 0.1F)));
 		}
 	}
