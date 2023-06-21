@@ -11,13 +11,13 @@ import java.util.function.Supplier;
 
 import org.apache.logging.log4j.LogManager;
 
-import info.u_team.attack_speed_enchantment.AttackSpeedEnchantmentMod;
+import info.u_team.attack_speed_enchantment.AttackSpeedEnchantmentReference;
+import info.u_team.u_team_core.util.ServiceUtil;
 import net.minecraft.util.Mth;
-import net.minecraftforge.fml.loading.FMLPaths;
 
-public class CommonConfig {
+public abstract class CommonConfig {
 	
-	private static final CommonConfig INSTANCE = new CommonConfig();
+	private static final CommonConfig INSTANCE = ServiceUtil.loadOne(CommonConfig.class);
 	
 	public static CommonConfig getInstance() {
 		return INSTANCE;
@@ -25,10 +25,10 @@ public class CommonConfig {
 	
 	public final Supplier<Integer> maxEnchantmentLevel;
 	
-	private final Path path = FMLPaths.CONFIGDIR.get().resolve(AttackSpeedEnchantmentMod.MODID + ".properties");
+	private final Path path = configBasePath().resolve(AttackSpeedEnchantmentReference.MODID + ".properties");
 	private final Properties properties;
 	
-	private CommonConfig() {
+	protected CommonConfig() {
 		properties = new Properties();
 		
 		if (Files.exists(path)) {
@@ -50,7 +50,7 @@ public class CommonConfig {
 		try (final Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
 			properties.load(reader);
 		} catch (final IOException ex) {
-			LogManager.getLogger(AttackSpeedEnchantmentMod.MODID).warn("Could not read property file '" + path.toAbsolutePath() + "'", ex);
+			LogManager.getLogger(AttackSpeedEnchantmentReference.MODID).warn("Could not read property file '" + path.toAbsolutePath() + "'", ex);
 		}
 	}
 	
@@ -58,8 +58,10 @@ public class CommonConfig {
 		try (final BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
 			properties.store(writer, "Configuration file for Attack Speed Enchantment mod");
 		} catch (final IOException ex) {
-			LogManager.getLogger(AttackSpeedEnchantmentMod.MODID).warn("Could not read property file '" + path.toAbsolutePath() + "'", ex);
+			LogManager.getLogger(AttackSpeedEnchantmentReference.MODID).warn("Could not read property file '" + path.toAbsolutePath() + "'", ex);
 		}
 	}
+	
+	public abstract Path configBasePath();
 	
 }
