@@ -1,0 +1,65 @@
+package info.u_team.attack_speed_enchantment.config;
+
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Properties;
+import java.util.function.Supplier;
+
+import org.apache.logging.log4j.LogManager;
+
+import info.u_team.attack_speed_enchantment.AttackSpeedEnchantmentMod;
+import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.loading.FMLPaths;
+
+public class CommonConfig {
+	
+	private static final CommonConfig INSTANCE = new CommonConfig();
+	
+	public static CommonConfig getInstance() {
+		return INSTANCE;
+	}
+	
+	public final Supplier<Integer> maxEnchantmentLevel;
+	
+	private final Path path = FMLPaths.CONFIGDIR.get().resolve(AttackSpeedEnchantmentMod.MODID + ".properties");
+	private final Properties properties;
+	
+	private CommonConfig() {
+		properties = new Properties();
+		
+		if (Files.exists(path)) {
+			load();
+		}
+		
+		properties.computeIfAbsent("maxEnchantmentLevel", unused -> "10");
+		
+		maxEnchantmentLevel = () -> {
+			return MathHelper.clamp(Integer.valueOf(properties.getProperty("maxEnchantmentLevel", "10")), 0, 10);
+		};
+		
+		if (!Files.exists(path)) {
+			save();
+		}
+	}
+	
+	private void load() {
+		try (final Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
+			properties.load(reader);
+		} catch (final IOException ex) {
+			LogManager.getLogger(AttackSpeedEnchantmentMod.MODID).warn("Could not read property file '" + path.toAbsolutePath() + "'", ex);
+		}
+	}
+	
+	private void save() {
+		try (final BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.UTF_8)) {
+			properties.store(writer, "Configuration file for Attack Speed Enchantment mod");
+		} catch (final IOException ex) {
+			LogManager.getLogger(AttackSpeedEnchantmentMod.MODID).warn("Could not read property file '" + path.toAbsolutePath() + "'", ex);
+		}
+	}
+	
+}
