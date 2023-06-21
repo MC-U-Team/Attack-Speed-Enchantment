@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "attackspeedenchantment",
+	"version": "${version}",
+	"name": "Attack Speed Enchantment",
+	"description": "Join our discord server here: https://discord.hycrafthd.net\n\nThis mod adds an enchantment that allows you to decrease the attack cooldown. When the enchantment reaches Level 10 the cooldown is removed entirely.",
+	"authors": [
+		"HyCraftHD"
+	],
+	"contact": {
+		"homepage": "https://u-team.info/mods/attackspeedenchantment",
+		"sources": "https://github.com/MC-U-Team/Attack-Speed-Enchantment"
+	},
+	"license": "Apache-2.0 License",
+	"icon": "logo.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"info.u_team.attack_speed_enchantment.AttackSpeedEnchantmentMod"
+		]
+	},
+	"mixins": [
+		"attackspeedenchantment.mixins.json"
+	],
+	"depends": {
+		"uteamcore": ">=5.1.2.266",
+		"fabricloader": ">=0.14.21",
+		"fabric": ">=0.83.1+1.20.1",
+		"minecraft": "1.20.1",
+		"java": ">=17"
+	},
+	"custom": {
+		"uteamcore:update_url": "https://api.u-team.info/update/attackspeedenchantment_fabric.json",
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.hycrafthd.net"
+			}
+		}
+	}
+}
