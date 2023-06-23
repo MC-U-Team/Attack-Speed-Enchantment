@@ -23,7 +23,7 @@ java {
 
 minecraft {
 	mappings channel: config.forge.mapping_channel, version: config.forge.mapping
-		
+	
 	runs {
 		client {
 			workingDirectory file("run/client")
@@ -106,7 +106,7 @@ dependencies {
 	implementation fg.deobf("info.u-team:u_team_core-forge-1.20.1:5.1.2.266")
 	
 	runtimeOnly fg.deobf("mezz.jei:jei-${config.minecraft.version}-forge:${config.jei.version}")
-		
+	
 	annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 }
 
