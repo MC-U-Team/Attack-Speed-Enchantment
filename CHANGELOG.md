@@ -1,6 +1,11 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.20.1-1.3.0.20] - 2023-06-30
+### Changed
+ - Updated forge and fabric api
+ - Updated uteamcore and use many functions from uteamcore
+
 ## [1.20.1-1.3.0.19] - 2023-06-23
 ### Changed
  - Fix crash because refmap name was wrong. Fixes [#36](https://github.com/MC-U-Team/Attack-Speed-Enchantment/issues/36)
