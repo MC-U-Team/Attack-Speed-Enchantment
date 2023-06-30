@@ -12,12 +12,12 @@ import java.util.function.Supplier;
 import org.apache.logging.log4j.LogManager;
 
 import info.u_team.attack_speed_enchantment.AttackSpeedEnchantmentReference;
-import info.u_team.u_team_core.util.ServiceUtil;
+import info.u_team.u_team_core.api.Platform;
 import net.minecraft.util.Mth;
 
-public abstract class CommonConfig {
+public class CommonConfig {
 	
-	private static final CommonConfig INSTANCE = ServiceUtil.loadOne(CommonConfig.class);
+	private static final CommonConfig INSTANCE = new CommonConfig();
 	
 	public static CommonConfig getInstance() {
 		return INSTANCE;
@@ -25,10 +25,10 @@ public abstract class CommonConfig {
 	
 	public final Supplier<Integer> maxEnchantmentLevel;
 	
-	private final Path path = configBasePath().resolve(AttackSpeedEnchantmentReference.MODID + ".properties");
+	private final Path path = Platform.getInstance().getConfigPath().resolve(AttackSpeedEnchantmentReference.MODID + ".properties");
 	private final Properties properties;
 	
-	protected CommonConfig() {
+	private CommonConfig() {
 		properties = new Properties();
 		
 		if (Files.exists(path)) {
@@ -61,7 +61,4 @@ public abstract class CommonConfig {
 			LogManager.getLogger(AttackSpeedEnchantmentReference.MODID).warn("Could not read property file '" + path.toAbsolutePath() + "'", ex);
 		}
 	}
-	
-	public abstract Path configBasePath();
-	
 }
