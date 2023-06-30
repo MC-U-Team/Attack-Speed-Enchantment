@@ -4,7 +4,7 @@ import java.util.List;
 
 import info.u_team.attack_speed_enchantment.AttackSpeedEnchantmentReference;
 import info.u_team.attack_speed_enchantment.init.AttackSpeedEnchantmentEnchantments;
-import info.u_team.attack_speed_enchantment.util.EnchantmentUtil;
+import info.u_team.u_team_core.util.EnchantmentUtil;
 import info.u_team.u_team_core.util.TooltipCreator;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

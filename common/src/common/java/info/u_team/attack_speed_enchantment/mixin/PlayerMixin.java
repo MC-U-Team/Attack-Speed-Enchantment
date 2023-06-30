@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import info.u_team.attack_speed_enchantment.init.AttackSpeedEnchantmentEnchantments;
-import info.u_team.attack_speed_enchantment.util.EnchantmentUtil;
+import info.u_team.u_team_core.util.EnchantmentUtil;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 
