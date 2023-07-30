@@ -64,6 +64,14 @@ minecraft {
 	}
 }
 
+mixin {
+	add sourceSets.main, "attackspeedenchantment.mixins.refmap.json"
+	config "attackspeedenchantment.mixins.json"
+	
+	debug.verbose = true
+	debug.export = true
+}
+
 tasks.withType(Jar).configureEach { task ->
 	gradlefiles.defaultJar(task)
 }
@@ -108,14 +116,6 @@ dependencies {
 	runtimeOnly fg.deobf("mezz.jei:jei-${config.minecraft.version}-forge:${config.jei.version}")
 	
 	annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
-}
-
-mixin {
-	add sourceSets.main, "attackspeedenchantment.mixins.refmap.json"
-	config "attackspeedenchantment.mixins.json"
-	
-	debug.verbose = true
-	debug.export = true
 }
 
 curseforge {
